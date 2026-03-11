@@ -106,8 +106,8 @@
       line-height: 1.5;
       min-height: 140px;
       background: #fff;
-      position: relative;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
     .p-header {
       display: flex;
@@ -122,7 +122,7 @@
     .p-name.is-body { color: #8b1a1a; }
     .p-decadal { color: #666; font-size: 0.68rem; }
 
-    .p-stars { margin-top: 2px; }
+    .p-stars { margin-top: 2px; flex: 1; }
     .star-major { font-weight: 700; color: #000; display: block; font-size: 0.76rem; }
     .star-soft { color: #1a6b1a; display: block; }
     .star-tough { color: #cc0000; display: block; }
@@ -131,14 +131,13 @@
     .star-mutagen { color: #cc0000; font-weight: 700; font-size: 0.68rem; }
 
     .p-footer {
-      position: absolute;
-      bottom: 3px; left: 6px; right: 6px;
       display: flex;
       justify-content: space-between;
       font-size: 0.62rem;
       color: #888;
       border-top: 1px dotted #ccc;
       padding-top: 2px;
+      margin-top: auto;
     }
     .p-footer span { white-space: nowrap; }
 
@@ -283,7 +282,7 @@
 <div id="chart-section">
   <div class="chart-toolbar">
     <button onclick="backToForm()">&#8592; Nhập lại</button>
-    <span style="font-size:0.8rem;color:#888" id="chart-copyright"></span>
+    <span></span>
   </div>
   <div id="chart-container"></div>
   <div class="chart-legend" id="chart-legend">
@@ -536,7 +535,7 @@ function generateChart() {
 
     // Render chart
     document.getElementById('chart-container').innerHTML = buildChart(astrolabe, formData);
-    document.getElementById('chart-copyright').textContent = astrolabe.copyright || '';
+    // copyright removed
 
     // Show chart, hide form
     document.getElementById('form-section').style.display = 'none';
